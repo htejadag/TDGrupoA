@@ -15,7 +15,8 @@ namespace ProyectoConsolaA
             //System.out.println("Hola mundo!"),
             string a = Console.ReadLine();
             Console.WriteLine("Hola " + a);
-            // Hola 
+            // Hola
+            // Hola 2
 
         }
     }

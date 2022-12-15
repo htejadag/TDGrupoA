@@ -10,7 +10,11 @@ namespace ProyectoConsolaA
     {
         static void Main(string[] args)
         {
-            Convertir();
+            PruebaLog objPruebaLog = new PruebaLog();
+            objPruebaLog.IngresaNombre();
+
+
+            //Convertir();
             //Ingresar();
         }
 

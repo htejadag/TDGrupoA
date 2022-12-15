@@ -25,10 +25,12 @@ namespace ProyectoConsolaA
         {
             try
             {
-                Log.Debug("");
+                //Log.Information("");
+                //Log.Warning("");
+                //Log.Error("");
+                Log.Information("El valor de a es : " + a);
 
-                Console.WriteLine("El valor de a es : " + a);
-                Console.WriteLine("El valor de b es : " + b);
+                Log.Information("El valor de b es : " + b);
 
                 int c;
                 //Console.WriteLine("Ingrese un número:");
@@ -45,7 +47,8 @@ namespace ProyectoConsolaA
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
         }
 

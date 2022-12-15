@@ -3,6 +3,7 @@
 //include
 
 using System;
+using Serilog;
 
 namespace ProyectoConsolaA
 {
@@ -10,9 +11,14 @@ namespace ProyectoConsolaA
     {
         static void Main(string[] args)
         {
-            PruebaLog objPruebaLog = new PruebaLog();
-            objPruebaLog.IngresaNombre();
+            // Configuración del logger
+            Log.Logger = new LoggerConfiguration()
+                 .WriteTo.File("log.txt")
+                 .CreateLogger();
 
+
+            PruebaLog objPruebaLog = new PruebaLog();
+            objPruebaLog.DividirEntreCero(10, 0);
 
             //Convertir();
             //Ingresar();
@@ -51,18 +57,22 @@ namespace ProyectoConsolaA
             }
             catch (ArgumentNullException ex)
             {
+                // Log errores
                 Console.WriteLine(ex.Message);
                 // Almacenarse en un log de errores
             }
             catch (FormatException ex)
             {
+                // Log errores
                 Console.WriteLine(ex.Message);
             }
             catch (OverflowException ex)
             {
+                // Log errores
                 Console.WriteLine(ex.Message);
             }
             catch (Exception ex) {
+                // Log errores
                 Console.WriteLine(ex.Message);
             }
 

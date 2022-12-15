@@ -30,7 +30,7 @@ namespace ProyectoConsolaA
             try
             {
                 int num = 0;
-                Console.WriteLine("Ingrese una palabra : ");
+                Console.WriteLine("Ingrese un numero nuevamente : ");
                 string dato = Console.ReadLine();
                 
                 bool resultado = int.TryParse(dato, out num);

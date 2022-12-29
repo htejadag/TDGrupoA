@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoConsolaA", "Proyect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoEscritorioA", "ProyectoEscritorioA\ProyectoEscritorioA.csproj", "{AF069870-4FEE-41A6-ACAA-CD6CD715DCF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoWebA", "ProyectoWebA\ProyectoWebA.csproj", "{2F202730-06C5-4FD1-9395-D9E9B44B0E35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoWebA", "ProyectoWebA\ProyectoWebA.csproj", "{2F202730-06C5-4FD1-9395-D9E9B44B0E35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProyectosConsola", "ProyectosConsola", "{CE4E7E1A-C75F-4735-A28A-D00BE349F9A0}"
 EndProject

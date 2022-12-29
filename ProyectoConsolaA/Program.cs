@@ -23,7 +23,7 @@ namespace ProyectoConsolaA
             //Convertir();
             //Ingresar();
 
-            Pregunta2();
+            Pregunta5();
         }
 
         public static void Convertir()
@@ -51,7 +51,7 @@ namespace ProyectoConsolaA
             
             try
             {
-                Int16 edad = 0;
+                Int32 edad = 0;
                 String dato = "40000";
                 //Console.WriteLine("Ingrese su edad: ");
                 //string dato = Console.ReadLine(); 
@@ -80,9 +80,9 @@ namespace ProyectoConsolaA
         {
             try
             {
-                Int16 a;
+                Int32 a;
                 String b = "40000";
-                a = Int16.Parse(b);
+                a = Int32.Parse(b);
                 Console.WriteLine("El número es " + a);
             }
             catch (Exception e)
@@ -96,10 +96,10 @@ namespace ProyectoConsolaA
         {
             try
             {
-                int a;
-                String b;
-                a = int.Parse(b);
-                Console.WriteLine("El número es " + a);
+                //int a;
+                //String b;
+                //a = int.Parse(b);
+                //Console.WriteLine("El número es " + a);
             }
             catch (Exception e)
             {
@@ -113,7 +113,7 @@ namespace ProyectoConsolaA
             try
             {
                 int a;
-                String b = "hola";
+                String b = "one";
                 a = int.Parse(b);
                 Console.WriteLine("El número es " + a);
             }

@@ -17,11 +17,13 @@ namespace ProyectoConsolaA
                  .CreateLogger();
 
 
-            PruebaLog objPruebaLog = new PruebaLog();
-            objPruebaLog.DividirEntreCero(10, 0);
+            //PruebaLog objPruebaLog = new PruebaLog();
+            //objPruebaLog.DividirEntreCero(10, 0);
 
             //Convertir();
             //Ingresar();
+
+            Pregunta2();
         }
 
         public static void Convertir()
@@ -50,32 +52,89 @@ namespace ProyectoConsolaA
             try
             {
                 Int16 edad = 0;
-                Console.WriteLine("Ingrese su edad: ");
-                string dato = Console.ReadLine(); 
+                String dato = "40000";
+                //Console.WriteLine("Ingrese su edad: ");
+                //string dato = Console.ReadLine(); 
                 edad = Int16.Parse(dato); 
                 Console.WriteLine("Tienes " + edad + " años"); 
             }
             catch (ArgumentNullException ex)
             {
-                // Log errores
-                Console.WriteLine(ex.Message);
-                // Almacenarse en un log de errores
+                Log.Error("ArgumentNullException : " + ex.Message);
             }
             catch (FormatException ex)
             {
-                // Log errores
-                Console.WriteLine(ex.Message);
+                Log.Error("FormatException : " + ex.Message);
             }
             catch (OverflowException ex)
             {
-                // Log errores
-                Console.WriteLine(ex.Message);
+                Log.Error("OverflowException : " + ex.Message);
             }
-            catch (Exception ex) {
-                // Log errores
-                Console.WriteLine(ex.Message);
+            //catch (Exception ex) {
+            //    Log.Error("Exception : " + ex.Message);
+            //}
+
+        }
+
+        public static void Pregunta1()
+        {
+            try
+            {
+                Int16 a;
+                String b = "40000";
+                a = Int16.Parse(b);
+                Console.WriteLine("El número es " + a);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
 
+        }
+
+        public static void Pregunta2()
+        {
+            try
+            {
+                int a;
+                String b;
+                a = int.Parse(b);
+                Console.WriteLine("El número es " + a);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
+        public static void Pregunta3()
+        {
+            try
+            {
+                int a;
+                String b = "hola";
+                a = int.Parse(b);
+                Console.WriteLine("El número es " + a);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
+        public static void Pregunta4()
+        {
+            int a = 5, b = 0, c;
+            c = a / b;
+            Console.WriteLine("El resultado es " + c);
+        }
+
+        public static void Pregunta5()
+        {
+            string a = "5", b = "0", c = a + b;
+            Console.WriteLine("El resultado es " + c);
         }
     }
 }

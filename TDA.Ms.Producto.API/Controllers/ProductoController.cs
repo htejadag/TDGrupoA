@@ -41,5 +41,16 @@ namespace TDA.Ms.Producto.API.Controllers
             return CreatedAtAction("CrearProducto", producto);
         }
 
+        [HttpPut(Name = "ModificarProducto")]
+        public ActionResult<Producto> ModificarProducto(Producto producto)
+        {
+            var productoModificado = listaProducto.Single(x => x.IdProducto == producto.IdProducto);
+            productoModificado.Nombre = producto.Nombre;
+            productoModificado.Precio = producto.Precio;
+            productoModificado.Cantidad = producto.Cantidad;
+            return CreatedAtAction("ModificarProducto", producto);
+        }
+
+
     }
 }

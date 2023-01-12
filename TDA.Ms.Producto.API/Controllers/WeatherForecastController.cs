@@ -23,7 +23,7 @@ namespace TDA.Ms.Producto.API.Controllers
         //    _logger = logger;
         //}
 
-        [HttpGet]
+        [HttpGet(Name = "Get")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

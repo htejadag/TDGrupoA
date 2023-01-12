@@ -51,6 +51,12 @@ namespace TDA.Ms.Producto.API.Controllers
             return CreatedAtAction("ModificarProducto", producto);
         }
 
+        [HttpDelete(Name = "EliminarProducto")]
+        public ActionResult<Producto> EliminarProducto(int idProducto)
+        {
+            listaProducto.RemoveAt(idProducto - 1);
+            return CreatedAtAction("EliminarProducto", idProducto);
+        }
 
     }
 }

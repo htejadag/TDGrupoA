@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace TDA.Ms.Producto.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductoController
+    public class ProductoController : ControllerBase
     {
         public static List<Producto> listaProducto = new List<Producto>
             {
@@ -27,10 +29,17 @@ namespace TDA.Ms.Producto.API.Controllers
 
         [HttpGet(Name = "ListarProductos")]
         public IEnumerable<Producto> ListarProductos()
-        {            
+        {
             return listaProducto;
         }
 
+        [HttpPost(Name = "CrearProducto")]
+        public ActionResult<Producto> CrearProducto(Producto producto)
+        {
+            producto.IdProducto = listaProducto.Count() + 1;
+            listaProducto.Add(producto);
+            return CreatedAtAction("CrearProducto", producto);
+        }
 
     }
 }

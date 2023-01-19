@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.18.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TDA.Ms.Producto.Infraestructura\TDA.Ms.Producto.Infraestructura.csproj" />
   </ItemGroup>
 
 </Project>

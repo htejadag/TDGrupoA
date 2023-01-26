@@ -1,88 +1,78 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System;
-using MongoDB.Driver;
-using TDA.Ms.Producto.API.Routes;
-using MongoDB.Bson;
-using TDA.Ms.Producto.Dominio.Servicios;
-using TDA.Ms.Producto.Aplicacion.Entidades.Producto.Read;
+using TDA.Ms.Producto.Aplicacion.Producto;
+using static TDA.Ms.Producto.API.Routes.ApiRoutes;
 using dominio = TDA.Ms.Producto.Dominio.Entidades;
 
-namespace TDA.Ms.Producto.API.Controllers
+namespace TDA.Ms.Producto.Api.Controllers
 {
     [ApiController]
     public class ProductoController : ControllerBase
     {
-        
 
-        [HttpGet(ApiRoutes.RouteProducto.GetAll)]
+        private readonly IProductoService _service;
+
+        public ProductoController(IProductoService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet(RouteProducto.GetAll)]
         public IEnumerable<dominio.Producto> ListarProductos()
         {
-            ProductoQueryGetAll objProducto = new ProductoQueryGetAll();
-            var listaProducto = objProducto.ListarProductos();
 
+            var listaProducto = _service.ListarProductos();
             return listaProducto;
         }
 
-        [HttpGet(ApiRoutes.RouteProducto.GetById)]
-        public dominio.Producto BuscarProducto(string id)
+        [HttpGet(RouteProducto.GetById)]
+        public dominio.Producto BuscarProducto(int id)
         {
-            #region Conexion a la base de datos
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("TDA_productos");
-            var collection = database.GetCollection<dominio.Producto>("producto");
-            #endregion
-
-            var objProducto = collection.Find(x => x._id == id).FirstOrDefault();
+            var objProducto = _service.Producto(id);
 
             return objProducto;
         }
 
-        [HttpPost(ApiRoutes.RouteProducto.Create)]
-        public ActionResult<dominio.Producto> CrearProducto(dominio.Producto producto)
+        [HttpPost(RouteProducto.Create)]
+        public ActionResult<dominio.Producto> CrearProducto([FromBody] dominio.Producto producto)
         {
-            #region Conexion a la base de datos
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("TDA_productos");
-            var collection = database.GetCollection<dominio.Producto>("producto");
-            #endregion
+            _service.Registraproducto(producto);
 
-            producto._id = ObjectId.GenerateNewId().ToString();
-
-            collection.InsertOne(producto);
-
-            return CreatedAtAction("CrearProducto", producto);
-        }
-
-        [HttpPut(ApiRoutes.RouteProducto.Update)]
-        public ActionResult<dominio.Producto> ModificarProducto(dominio.Producto producto)
-        {
-            #region Conexion a la base de datos
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("TDA_productos");
-            var collection = database.GetCollection<dominio.Producto>("producto");
-            #endregion
-
-            collection.ReplaceOne(x => x._id == producto._id, producto);
-
-            return CreatedAtAction("ModificarProducto", producto);
-        }
-
-        [HttpDelete(ApiRoutes.RouteProducto.Delete)]
-        public ActionResult<dominio.Producto> EliminarProducto(string id)
-        {
-            #region Conexion a la base de datos
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("TDA_productos");
-            var collection = database.GetCollection<dominio.Producto>("producto");
-            #endregion
-
-            collection.DeleteOne(x => x._id == id);
-
-            //listaProducto.RemoveAt(idProducto - 1);
             return Ok();
         }
 
+        //[HttpPut(RouteProducto.Update)]
+        //public ActionResult<dominio.Producto> ModificarProducto(dominio.Producto producto)
+        //{
+        //    #region Conexión a base de datos
+        //    var client = new MongoClient("mongodb://localhost:27017");
+        //    var database = client.GetDatabase("TDB_productos");
+        //    var collection = database.GetCollection<dominio.Producto>("producto");
+        //    #endregion
+
+        //    collection.FindOneAndReplace(x => x._id == producto._id, producto);
+
+        //    //var oldProducto = collection.Find(x => x.IdProducto == producto.IdProducto).FirstOrDefault();
+        //    //oldProducto.Nombre = producto.Nombre;
+        //    //oldProducto.Precio = producto.Precio;
+        //    //oldProducto.Cantidad = producto.Cantidad;
+        //    //collection.ReplaceOne(x=>x.IdProducto == oldProducto.IdProducto, oldProducto);
+
+
+        //    //Producto productoModificado = listaProducto.Single(x => x.IdProducto == producto.IdProducto);
+        //    //productoModificado.Nombre = producto.Nombre;
+        //    //productoModificado.Cantidad = producto.Cantidad;
+        //    //productoModificado.Precio= producto.Precio;
+        //    //return CreatedAtAction("ModificarProducto", productoModificado);
+        //    return Ok();
+        //}
+
+        [HttpDelete(RouteProducto.Delete)]
+        public ActionResult<dominio.Producto> EliminarProducto(int id)
+        {
+            _service.Eliminar(id);
+
+            return Ok(id);
+        }
     }
 }

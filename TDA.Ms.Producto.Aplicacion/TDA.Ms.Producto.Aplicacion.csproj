@@ -7,8 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Producto\Read\**" />
+    <Compile Remove="Producto\Write\**" />
+    <Compile Remove="Producto\Read\**" />
+    <Compile Remove="Producto\Write\**" />
+    <EmbeddedResource Remove="Producto\Read\**" />
+    <EmbeddedResource Remove="Producto\Write\**" />
+    <EmbeddedResource Remove="Producto\Read\**" />
+    <EmbeddedResource Remove="Producto\Write\**" />
+    <None Remove="Producto\Read\**" />
+    <None Remove="Producto\Write\**" />
+    <None Remove="Producto\Read\**" />
+    <None Remove="Producto\Write\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TDA.Ms.Producto.Dominio\TDA.Ms.Producto.Dominio.csproj" />
     <ProjectReference Include="..\TDA.Ms.Producto.Infraestructura\TDA.Ms.Producto.Infraestructura.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entidades\" />
   </ItemGroup>
 
 </Project>

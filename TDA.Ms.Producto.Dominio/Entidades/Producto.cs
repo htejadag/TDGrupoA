@@ -1,29 +1,20 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Release.MongoDB.Repository;
+using Release.MongoDB.Repository.Model;
 
 namespace TDA.Ms.Producto.Dominio.Entidades
 {
-    public class Producto
+    [CollectionProperty("producto")]
+    [BsonIgnoreExtraElements]
+    public class Producto : EntityToLower<ObjectId>
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string _id { get; set; }
+        public int idProducto { get; set; }
 
+        public string nombre { get; set; }
 
-        public int IdProducto { get; set; }
+        public decimal precio { get; set; }
 
-
-        public string Nombre { get; set; }
-
-
-        public decimal Precio { get; set; }
-
-
-        public int Cantidad { get; set; }
+        public int cantidad { get; set; }
     }
 }

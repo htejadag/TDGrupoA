@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using MongoDB.Driver;
 using Release.MongoDB.Repository;
+using TDA.Ms.Producto.Aplicacion.Categoria;
 using TDA.Ms.Producto.Aplicacion.Producto;
 using TDA.Ms.Producto.Infraestructura;
 using dominio = TDA.Ms.Producto.Dominio.Entidades;
@@ -22,15 +23,18 @@ namespace TDA.Ms.Producto.Aplicacion
 
             //Entidades            
             services.TryAddScoped<ICollectionContext<dominio.Producto>>(x => new CollectionContext<dominio.Producto>(x.GetService<IDbContext>()));
+            services.TryAddScoped<ICollectionContext<dominio.Categoria>>(x => new CollectionContext<dominio.Categoria>(x.GetService<IDbContext>()));
 
             //Como Repo
             services.TryAddScoped<IBaseRepository<dominio.Producto>>(x => new BaseRepository<dominio.Producto>(x.GetService<IDbContext>()));
+            services.TryAddScoped<IBaseRepository<dominio.Categoria>>(x => new BaseRepository<dominio.Categoria>(x.GetService<IDbContext>()));
 
             #endregion
 
             #region Servicios
 
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
 
             #endregion
 

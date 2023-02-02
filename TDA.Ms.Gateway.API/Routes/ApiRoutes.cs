@@ -1,4 +1,4 @@
-﻿namespace TDA.Ms.Producto.API.Routes
+﻿namespace TDA.Ms.Gateway.Api.Routes
 {
     public static class ApiRoutes
     {
@@ -16,19 +16,14 @@
             public const string Create = Base + "/producto/create";
             public const string Update = Base + "/producto/update";
             public const string Delete = Base + "/producto/delete";
-            public const string ActualizarStock = Base + "/producto/actualizarStock";
         }
 
-        public static class RouteCategoria
+        public static class RoutePedido
         {
-            // Read
-            public const string GetAll = Base + "/categoria/all";
-            public const string GetById = Base + "/categoria/{id}";
+            // Read            
 
             // Write
-            public const string Create = Base + "/categoria/create";
-            public const string Update = Base + "/categoria/update";
-            public const string Delete = Base + "/categoria/delete";
+            public const string RegistrarPedido = Base + "/pedido/registrarPedido";
         }
     }
 }

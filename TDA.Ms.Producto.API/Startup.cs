@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TDA.Ms.Producto.Aplicacion;
-using TDA.Ms.Producto.Aplicacion;
 
 namespace TDA.Ms.Producto.Api
 {

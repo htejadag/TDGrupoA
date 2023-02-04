@@ -23,16 +23,16 @@ namespace TDA.Ms.Gateway.Aplicacion
 
             #endregion
 
-            //#region Cliente MsClientes
+            #region Cliente MsClientes
 
-            //services.AddHttpClient("MsClientes", client =>
-            //{
-            //    client.BaseAddress = new Uri(msSettings.ClientesUrl);
-            //});
+            services.AddHttpClient("MsClientes", client =>
+            {
+                client.BaseAddress = new Uri(msSettings.ClientesUrl);
+            });
 
-            //services.AddScoped<ClientesClient.IClient, ClientesClient.Client>();
+            services.AddScoped<ClientesClient.IClient, ClientesClient.Client>();
 
-            //#endregion
+            #endregion
 
             return services;
         }

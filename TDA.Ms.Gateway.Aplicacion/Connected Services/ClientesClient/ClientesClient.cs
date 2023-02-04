@@ -61,11 +61,13 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.18.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Client : IClient
     {
+        private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public Client(System.Net.Http.HttpClient httpClient)
+        public Client(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
+            BaseUrl = baseUrl;
             _httpClient = httpClient;
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
@@ -75,6 +77,12 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
             var settings = new Newtonsoft.Json.JsonSerializerSettings();
             UpdateJsonSerializerSettings(settings);
             return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set { _baseUrl = value; }
         }
 
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
@@ -98,7 +106,7 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
         public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Cliente>> ApiV1ClienteAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/all");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/cliente/all");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -175,7 +183,7 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/{id}");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/cliente/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -250,7 +258,7 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
         public virtual async System.Threading.Tasks.Task<Cliente> ApiV1ClienteCreateAsync(Cliente body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/create");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/cliente/create");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -328,7 +336,7 @@ namespace TDA.Ms.Gateway.Aplicacion.ClientesClient
         public virtual async System.Threading.Tasks.Task<Cliente> ApiV1ClienteDeleteAsync(int? id, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/delete?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/cliente/delete?");
             if (id != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
